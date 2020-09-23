@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { Router } from '@reach/router';
+
 import './App.css';
-import CreateMatch from './matches/CreateMatch/CreateMatch';
+import CreateCompetition from './competitions/CreateCompetition';
+import Competition from './competitions/Competition';
 
 function App() {
   return (
-    <CreateMatch/>
+    <Router>
+      <CreateCompetition path="/"/>
+      <Competition path="/competition/:competitionId"/>
+    </Router>
   );
 }
 

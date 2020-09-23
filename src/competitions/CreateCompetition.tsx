@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from './CreateMatch.module.css';
+import { RouteComponentProps, navigate } from '@reach/router';
 
-class CreateMatch extends React.Component {
+class CreateCompetition extends React.Component<RouteComponentProps> {
   state: {teams: Array<string>, teamName: string};
 
-  constructor(props: Readonly<{}>) {
+  constructor(props: RouteComponentProps) {
     super(props);
     this.state = { teams: new Array<string>(), teamName: '' };
     this.updateTeamName = this.updateTeamName.bind(this);
     this.addTeam = this.addTeam.bind(this);
-    this.generateMatches = this.generateMatches.bind(this);
+    this.createCompetition = this.createCompetition.bind(this);
   }
 
   updateTeamName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -22,13 +22,14 @@ class CreateMatch extends React.Component {
     this.setState({teams, teamName: ''});
   }
 
-  generateMatches() {
-    console.log('generateMatches');
+  createCompetition() {
+    console.log('createCompetition');
+    navigate('competition/1');
   }
 
   render() {
     return (
-      <div className={styles.CreateMatch}>
+      <div>
         <div>
           <input type="text" placeholder="Team Name" value={this.state.teamName} onChange={this.updateTeamName}/>
           <button onClick={this.addTeam}>Add Team</button>
@@ -37,10 +38,10 @@ class CreateMatch extends React.Component {
         <ul>
           {this.state.teams.map((team, index) => <li key={index}>{team}</li>)}
         </ul>
-        <button onClick={this.generateMatches}>Generate Matches</button>
+        <button onClick={this.createCompetition}>Create Competition</button>
       </div>
     );
   }
 };
 
-export default CreateMatch;
+export default CreateCompetition;
