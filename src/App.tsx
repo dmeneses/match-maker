@@ -3,14 +3,17 @@ import React from 'react';
 import { Router } from '@reach/router';
 
 import './App.css';
-import CreateCompetition from './competitions/CreateCompetition';
-import Competition from './competitions/Competition';
+import CreateEvent from './events/CreateEvent';
+import Event from './events/Event';
+import Events from './events/Events';
 
 function App() {
   return (
+    
     <Router>
-      <CreateCompetition path="/"/>
-      <Competition path="/competition/:competitionId"/>
+      <Events path="events"/>
+      <CreateEvent path="/events/create"/>
+      <Event path="/events/:eventId"/>
     </Router>
   );
 }

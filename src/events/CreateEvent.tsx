@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, navigate } from '@reach/router';
 
-class CreateCompetition extends React.Component<RouteComponentProps> {
+class CreateEvent extends React.Component<RouteComponentProps> {
   state: {teams: Array<string>, teamName: string};
 
   constructor(props: RouteComponentProps) {
@@ -9,7 +9,7 @@ class CreateCompetition extends React.Component<RouteComponentProps> {
     this.state = { teams: new Array<string>(), teamName: '' };
     this.updateTeamName = this.updateTeamName.bind(this);
     this.addTeam = this.addTeam.bind(this);
-    this.createCompetition = this.createCompetition.bind(this);
+    this.createEvent = this.createEvent.bind(this);
   }
 
   updateTeamName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -22,9 +22,9 @@ class CreateCompetition extends React.Component<RouteComponentProps> {
     this.setState({teams, teamName: ''});
   }
 
-  createCompetition() {
-    console.log('createCompetition');
-    navigate('competition/1');
+  createEvent() {
+    console.log('createEvent');
+    navigate('/events/1');
   }
 
   render() {
@@ -38,10 +38,10 @@ class CreateCompetition extends React.Component<RouteComponentProps> {
         <ul>
           {this.state.teams.map((team, index) => <li key={index}>{team}</li>)}
         </ul>
-        <button onClick={this.createCompetition}>Create Competition</button>
+        <button onClick={this.createEvent}>Create Event</button>
       </div>
     );
   }
 };
 
-export default CreateCompetition;
+export default CreateEvent;
